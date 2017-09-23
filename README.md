@@ -1,5 +1,5 @@
 # Secure API Server Example
-Example built with the intention show how to authenticate Restful API.
+This example was built with the intention show how to authenticate Restful API.
 
 ## Getting Started
 Open the terminal. Put the commands below to download and start the project:
