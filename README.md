@@ -14,19 +14,19 @@ Open the terminal. Put the commands below to download and start the project:
 
 ### Method's description
 * (POST) - {url}/api/sign-up
-
+´´´
 Params(JSON) : username:$username, password:$password
-
+´´´
 
 * (POST) - {url}/api/sign-in
-
+´´´
 Params(JSON) : username:$username, password:$password
-
+´´´
 
 * (GET) - {url}/api/find/$userId
-
+´´´
 Headers : userId:$userId, bearer:$accessToken
-
+´´´
 ### Running tests
 Open the terminal. Put the commands below to test:
 * $> cd secure-api-server-example
