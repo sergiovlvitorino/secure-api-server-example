@@ -38,8 +38,10 @@ public class UserController {
 		try {
 			core.validate(token, userId);
 			return ResponseEntity.status(HttpStatus.OK).body(mapper.writeValueAsString(core.find(id)));
-		} catch (Exception e) {
+		} catch (IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messageBuilder.build(e.getMessage()));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(messageBuilder.build(e.getMessage()));
 		}
 	}
 
@@ -47,8 +49,10 @@ public class UserController {
 	public ResponseEntity<String> signUp(@RequestBody User user) {
 		try {
 			return ResponseEntity.status(HttpStatus.CREATED).body(mapper.writeValueAsString(core.signUp(user)));
-		} catch (Exception e) {
+		} catch (IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messageBuilder.build(e.getMessage()));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(messageBuilder.build(e.getMessage()));
 		}
 	}
 	
@@ -56,8 +60,10 @@ public class UserController {
 	public ResponseEntity<String> signIn(@RequestBody Map<String, String> json) {
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(mapper.writeValueAsString(core.signIn(json.get("username"), json.get("password"))));
-		} catch (Exception e) {
+		}catch (IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messageBuilder.build(e.getMessage()));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(messageBuilder.build(e.getMessage()));
 		}
 	}
 	

@@ -44,13 +44,13 @@ public class UserCore {
 		return repository.findOne(id);
 	}
 	
-	public User signIn(String username, String password) throws Exception {
+	public User signIn(String username, String password) throws IllegalArgumentException {
 		User user = repository.findByUsername(username);
 		if(user == null) {
-			throw new Exception("User not found");
+			throw new IllegalArgumentException("User not found");
 		}
 		if(!user.getPassword().equals(passwordEncrypter.encrypt(password))) {
-			throw new Exception("Invalid Credentials");
+			throw new IllegalArgumentException("Invalid Credentials");
 		}
 		user.setAccessToken(accessTokenManager.build(user.getId()));
 		user.setLastUpdateAt(Calendar.getInstance());
@@ -58,15 +58,15 @@ public class UserCore {
 		return user;
 	}
 	
-	public void validate(String accessToken, String userId) throws Exception{
+	public void validate(String accessToken, String userId) throws IllegalArgumentException{
 		User user = repository.findByAccessToken(accessToken);
 		if (user == null || !user.getId().equals(userId) || !accessTokenManager.verify(accessToken, userId)) {
-			throw new Exception("Unauthorized");
+			throw new IllegalArgumentException("Unauthorized");
 		}
 		Calendar maxInactiveDate = Calendar.getInstance();
 		maxInactiveDate.setTimeInMillis(Calendar.getInstance().getTimeInMillis() - inactive);
 		if(user.getLastUpdateAt().before(maxInactiveDate)) {
-			throw new Exception("Invalid Session");
+			throw new IllegalArgumentException("Invalid Session");
 		}
 		user.setLastUpdateAt(Calendar.getInstance());
 		repository.save(user);
