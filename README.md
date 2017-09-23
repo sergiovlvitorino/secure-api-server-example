@@ -14,13 +14,13 @@ Open the terminal. Put the commands below to download and start the project:
 
 ### Method's description
 * (POST) - {url}/api/sign-up
-** Params : {username:<username>,password:<password>}
+* Params(JSON) : username:username_value, password:password_value
 
 * (POST) - {url}/api/sign-in
-** Params : {username:<username>,password:<password>}
+* Params(JSON) : username:username_value, password:password_value
 
-* (GET) - {url}/api/find/<userId>
-** Headers : userId:<userId>,bearer:<accessToken>
+* (GET) - {url}/api/find/userId_value
+* Headers : userId:userId_value, bearer:accessToken_value
 
 ### Running tests
 Open the terminal. Put the commands below to test:
