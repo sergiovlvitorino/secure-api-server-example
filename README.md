@@ -1,4 +1,4 @@
-# TokenManager
+# Secure API Server Example
 Example built with the intention show how to authenticate Restful API.
 
 ## Getting Started
