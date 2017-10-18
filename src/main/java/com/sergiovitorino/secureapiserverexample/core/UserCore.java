@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.sergiovitorino.secureapiserverexample.cript.AccessTokenManager;
-import com.sergiovitorino.secureapiserverexample.cript.PasswordEncrypter;
+import com.sergiovitorino.secureapiserverexample.crypt.AccessTokenManager;
+import com.sergiovitorino.secureapiserverexample.crypt.PasswordEncrypter;
 import com.sergiovitorino.secureapiserverexample.model.User;
 import com.sergiovitorino.secureapiserverexample.repository.UserRepository;
 

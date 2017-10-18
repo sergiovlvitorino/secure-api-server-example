@@ -1,4 +1,4 @@
-package com.sergiovitorino.secureapiserverexample.cript;
+package com.sergiovitorino.secureapiserverexample.crypt;
 
 import java.io.UnsupportedEncodingException;
 import java.time.ZonedDateTime;
